@@ -16,6 +16,8 @@ function MovieDetail() {
   return (
     <>
       {loadingMoviesDetail && <p className="display-3">Loading...</p>}
+      {errorMoviesDetail && <p>{errorMoviesDetail.message}</p>}
+
       <Container>
         <Card className="bg-dark text-white">
           <Card.Img src={`https://image.tmdb.org/t/p/original${moviesDetail.poster_path}`} alt="poster movie" />
@@ -26,16 +28,16 @@ function MovieDetail() {
           <Card.Text>
             {moviesDetail.overview}
           </Card.Text>
+          <Card.Text>
+            Budget: {moviesDetail != null && moviesDetail.budget}
+            {/* {Number((moviesDetail.budget).toFixed(1)).toLocaleString()} */}
+          </Card.Text>
+          <Card.Text>
+            Revenue: {moviesDetail.revenue}
+          </Card.Text>
           {/* <Card.Text>
-            {moviesDetail.budget.toFixed(1)}
-            {Number(({moviesDetail.budget}).toFixed(1)).toLocaleString()}
+            Revenue: {moviesDetail.budget}
           </Card.Text> */}
-          <Card.Text>
-            Budget: {moviesDetail.revenue}
-          </Card.Text>
-          <Card.Text>
-            Revenue: {moviesDetail && moviesDetail.budget.toFixed(1)}
-          </Card.Text>
           <Card.Text>            
             <p>Release : {moviesDetail.release_date}</p>
           </Card.Text>
