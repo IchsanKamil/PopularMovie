@@ -4,7 +4,6 @@ import {
   Link
 } from "react-router-dom";
 import { useDispatch } from 'react-redux'
-// import store from '../store';
 
 export default props => {
   const dispatch = useDispatch()
@@ -38,7 +37,7 @@ export default props => {
               {props.movie.budget}
             </Card.Text>
             <Card.Text>
-              <p>Release : {props.movie.release_date}</p>
+              Release : {props.movie.release_date}
             </Card.Text>
           </Card.Body>
         </Link >

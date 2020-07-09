@@ -1,8 +1,5 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import {
-  Link
-} from "react-router-dom";
 
 export default props => {
   return (
@@ -15,7 +12,7 @@ export default props => {
             {props.favorite.overview}
           </Card.Text>
           <Card.Text>
-            <p>Release : {props.favorite.release_date}</p>
+            Release : {props.favorite.release_date}
           </Card.Text>
         </Card.Body>
       </Card>

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import MovieFavorite from '../components/MovieFavorites.js';
 
 function Favorite() {
-  const favorites = useSelector(state => state.favorites)
+  const favorites = useSelector(state => state.favoriteReducer.favorites)
 
   return (
     <Container>
