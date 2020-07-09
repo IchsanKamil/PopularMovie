@@ -12,7 +12,7 @@ function Home() {
   
   return (
     <Container>
-      {loadingMovies && <p class="display-3">Loading...</p>}
+      {loadingMovies && <p className="display-3">Loading...</p>}
       {errorMovies && <p>{errorMovies.message}</p>}
       <CardColumns>
         {!loadingMovies && movies.results.map((movie) => {
