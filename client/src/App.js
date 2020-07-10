@@ -19,13 +19,11 @@ export default function App() {
         <Nav className="justify-content-around mt-3" variant="pills" defaultActiveKey="/">
           <Nav.Item>
             <Link to={`/`}>
-              {/* <Nav.Link href="/" eventKey="1">Home</Nav.Link> */}
               Home
             </Link>
           </Nav.Item>
           <Nav.Item>
             <Link to={`/favorites`}>
-              {/* <Nav.Link href="/favorites" eventKey="2">Favorite</Nav.Link> */}
               Favorite
             </Link>
           </Nav.Item>

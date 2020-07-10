@@ -4,13 +4,11 @@ import { useSelector } from 'react-redux';
 import MovieFavorite from '../components/MovieFavorites.js';
 
 function Favorite() {
-  const favorites = useSelector(state => state.favoriteReducer.favorites)
+  const {favorites} = useSelector(state => state.favoriteReducer)
 
   return (
     <Container>
       <CardColumns>
-        {/* cek */}
-        {/* {JSON.stringify(favorites)} */}
         { favorites.map(favorite => {
           return <MovieFavorite favorite={favorite} key={favorite.id} />
         }) }

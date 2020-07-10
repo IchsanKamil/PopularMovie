@@ -1,45 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   useParams
 } from "react-router-dom";
-import useFetch from '../hooks/useFetch.js';
 import { Card, Container } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { getMovie } from '../store/actions/movieAction.js';
 
 function MovieDetail() {
   const { id } = useParams()
-  const {
-    data: moviesDetail,
-    error: errorMoviesDetail,
-    loading: loadingMoviesDetail,
-  } = useFetch(`https://api.themoviedb.org/3/movie/${id}?api_key=e68c0c0ec31d30e3fbe6a92cda66f34a&language=en-US`)
-  // let budget = Number(({moviesDetail.budget}).toFixed(1)).toLocaleString()
+  const { movie } = useSelector(state => state.movieReducer)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getMovie(id))
+  }, [id, dispatch])
+
   return (
     <>
-      {loadingMoviesDetail && <p className="display-3">Loading...</p>}
-      {errorMoviesDetail && <p>{errorMoviesDetail.message}</p>}
-
       <Container>
         <Card className="bg-dark text-white">
-          <Card.Img src={`https://image.tmdb.org/t/p/original${moviesDetail.poster_path}`} alt="poster movie" />
+          <Card.Img src={`https://image.tmdb.org/t/p/original${movie && movie.poster_path}`} alt="poster movie" />
           <Card.ImgOverlay>
-            <Card.Title>{moviesDetail.title}</Card.Title>
+            <Card.Title>{movie && movie.title}</Card.Title>
           </Card.ImgOverlay>
 
           <Card.Text>
-            {moviesDetail.overview}
+            {movie && movie.overview}
           </Card.Text>
           <Card.Text>
-            Budget: {moviesDetail != null && moviesDetail.budget}
-            {/* {Number((moviesDetail.budget).toFixed(1)).toLocaleString()} */}
+            Budget: {movie && movie.budget}
           </Card.Text>
           <Card.Text>
-            Revenue: {moviesDetail.revenue}
+            Revenue: {movie && movie.revenue}
           </Card.Text>
-          {/* <Card.Text>
-            Revenue: {moviesDetail.budget}
-          </Card.Text> */}
           <Card.Text>            
-            <p>Release : {moviesDetail.release_date}</p>
+            Release : {movie && movie.release_date}
           </Card.Text>
         </Card>
       </Container>
